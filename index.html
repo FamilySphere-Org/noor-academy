@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أكاديمية نور — لتعليم القرآن الكريم وحفظه</title>
+  <meta name="description" content="مسارات تعليمية للقرآن الكريم: تجويد، حفظ، وتفسير، مع ورد يومي يجعل العادة عبادة." />
+  <style>
+    :root {
+      --bg: #f7f6f0;
+      --surface: #ffffff;
+      --surface-soft: #eef4f1;
+      --primary: #14533c;
+      --primary-dark: #0c3828;
+      --accent: #b88a1e;
+      --accent-soft: #f7f0dc;
+      --text: #18211e;
+      --muted: #586660;
+      --border: #e2dfd5;
+      --success: #1b7a52;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(20, 83, 60, 0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+    }
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .brand-title { font-weight: 800; font-size: 1.08rem; color: var(--primary); display: block; line-height: 1.25; }
+    .brand-sub { font-size: 0.78rem; color: var(--muted); display: block; }
+    nav { display: flex; gap: 16px; flex-wrap: wrap; font-weight: 600; font-size: 0.92rem; }
+    nav a { padding: 4px 2px; border-bottom: 2px solid transparent; transition: 0.2s; }
+    nav a:hover { color: var(--primary); border-bottom-color: var(--accent); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      border-radius: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: 0.2s;
+      font-size: 0.92rem;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline { background: transparent; border-color: var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: #fff; }
+    .btn-sm { padding: 7px 13px; font-size: 0.84rem; border-radius: 9px; }
+
+    /* Hero */
+    .hero { padding: 44px 0 32px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.22fr 0.78fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-soft);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      border: 1px solid #d4e4dc;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    h1 { font-size: 2.45rem; line-height: 1.22; margin-bottom: 14px; color: var(--text); }
+    h1 span { color: var(--primary); }
+    .hero-desc { color: var(--muted); font-size: 1.04rem; margin-bottom: 22px; max-width: 600px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 26px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+    .stats dt { font-weight: 800; font-size: 1.25rem; color: var(--primary); }
+    .stats dd { font-size: 0.84rem; color: var(--muted); }
+
+    /* Verse & Streak Card */
+    .verse-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .verse-label { font-size: 0.82rem; color: var(--accent); font-weight: 800; margin-bottom: 6px; }
+    .verse-text { font-size: 1.32rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; line-height: 1.65; }
+    .verse-ref { font-size: 0.84rem; color: var(--muted); margin-bottom: 18px; }
+    .streak-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 12px;
+    }
+    .streak-head { display: flex; justify-content: space-between; font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; }
+    .days-row { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .day-pill {
+      text-align: center;
+      padding: 8px 2px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: #e5e3da;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+      transition: 0.15s;
+    }
+    .day-pill.done { background: var(--primary); color: #fff; }
+    .streak-note { font-size: 0.76rem; color: var(--muted); margin-top: 8px; }
+
+    /* Sections */
+    section { padding: 38px 0; }
+    .sec-head { margin-bottom: 22px; }
+    .sec-head h2 { font-size: 1.72rem; color: var(--text); margin-bottom: 6px; }
+    .sec-head p { color: var(--muted); font-size: 0.98rem; }
+
+    /* Steps */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .step-num {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 12px;
+      border: 1px solid #d4e4dc;
+    }
+
+    /* Filters & Courses */
+    .filter-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-label { font-weight: 700; font-size: 0.88rem; color: var(--muted); margin-left: 4px; }
+    .chip {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.86rem;
+      color: var(--text);
+      transition: 0.15s;
+    }
+    .chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .course-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .course-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 7px;
+      background: var(--accent-soft);
+      color: #7c5b0c;
+    }
+    .course-progress-text { font-size: 0.78rem; font-weight: 700; color: var(--success); }
+    .course-card h3 { margin-bottom: 8px; font-size: 1.12rem; color: var(--text); }
+    .course-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; flex-grow: 1; }
+    .bar-track {
+      height: 6px;
+      background: #eceae2;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .bar-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.25s ease;
+    }
+    .course-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    /* Daily Wird & Timer */
+    .wird-banner {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .wird-banner h2 { font-size: 1.65rem; margin: 6px 0 10px; line-height: 1.3; }
+    .wird-banner p { opacity: 0.92; margin-bottom: 18px; font-size: 0.96rem; }
+    .wird-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 16px; }
+    .wird-item {
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 13px;
+      border-radius: 12px;
+    }
+    .wird-item dt { font-size: 0.82rem; opacity: 0.88; }
+    .wird-item dd { font-size: 1.12rem; font-weight: 800; }
+
+    .timer-box {
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .timer-clock { font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; font-variant-numeric: tabular-nums; }
+    .timer-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-light { background: #fff; color: var(--primary); }
+    .btn-light:hover { background: #f2f5f3; }
+    .btn-ghost-light { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.28); }
+
+    /* Progress Summary Card */
+    .summary-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+    .summary-metrics { display: flex; gap: 24px; flex-wrap: wrap; }
+    .metric strong { display: block; font-size: 1.25rem; color: var(--primary); }
+    .metric span { font-size: 0.84rem; color: var(--muted); }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 24, 19, 0.58);
+      place-items: center;
+      padding: 18px;
+      z-index: 120;
+    }
+    .modal.open { display: grid; }
+    .modal-box {
+      background: var(--surface);
+      max-width: 600px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .lesson-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+    .lesson-panel {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .lesson-verse {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 10px 0;
+      padding: 10px 12px;
+      background: var(--surface);
+      border-right: 4px solid var(--accent);
+      border-radius: 8px;
+    }
+    .modal-footer { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: 0.25s;
+      z-index: 150;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 36px 0 20px;
+      margin-top: 36px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    footer h3 { font-size: 1rem; margin-bottom: 10px; color: var(--primary); }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 6px; font-size: 0.9rem; color: var(--muted); }
+    footer li a:hover { color: var(--primary); }
+    .copyright {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      text-align: center;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .grid-3, .wird-banner, .footer-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2rem; }
+      .wird-banner { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">
+        <span class="brand-icon">ن</span>
+        <span>
+          <span class="brand-title">أكاديمية نور</span>
+          <span class="brand-sub">لتعليم القرآن الكريم وحفظه</span>
+        </span>
+      </a>
+      <nav aria-label="التنقل الرئيسي">
+        <a href="#top">الرئيسية</a>
+        <a href="#courses">الكورسات</a>
+        <a href="#steps">كيف تسير الرحلة</a>
+        <a href="#habit">الورد اليومي</a>
+        <a href="#progress-section">تقدمي</a>
+      </nav>
+      <a href="#courses" class="btn btn-primary btn-sm">ابدأ الآن</a>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="badge"><span class="dot"></span>أكاديمية قرآنية · مسارات متتابعة</span>
+          <h1>اجعل العادة <span>عبادة</span></h1>
+          <p class="hero-desc">تعلّم القرآن الكريم خطوة بخطوة: تجويدٌ يُتقن التلاوة، وحفظٌ يُثبّت، وتفسيرٌ يُقرّب المعنى، مع ورد يومي بسيط يجعلك تُداوم.</p>
+          <div class="hero-actions">
+            <a href="#courses" class="btn btn-primary">تصفّح الكورسات</a>
+            <a href="#habit" class="btn btn-outline">ابدأ ببرنامج الورد</a>
+          </div>
+          <dl class="stats">
+            <div><dt>١٢+</dt><dd>كورسًا متاحًا</dd></div>
+            <div><dt>٣</dt><dd>مسارات تعليمية</dd></div>
+            <div><dt>ورد يومي</dt><dd>لا ينقطع</dd></div>
+          </dl>
+        </div>
+
+        <div class="verse-card">
+          <p class="verse-label">آية اليوم</p>
+          <p class="verse-text">إِنَّ هَذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ</p>
+          <p class="verse-ref">سورة الإسراء · الآية ٩</p>
+          <div class="streak-box">
+            <div class="streak-head">
+              <span>وردك هذا الأسبوع</span>
+              <span id="streak-count">٠ من ٧ أيام</span>
+            </div>
+            <div class="days-row" id="days-row"></div>
+            <p class="streak-note">اضغط على أي يوم لتسجيل أو إلغاء إتمام الورد محلياً في متصفحك.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section id="steps">
+      <div class="sec-head">
+        <h2>كيف تسير الرحلة</h2>
+        <p>ثلاث خطوات واضحة، بلا تعقيد، تنقلك من أول حرف إلى تلاوة مطمئنة.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <div class="step-num">١</div>
+          <h3>اختر مسارك</h3>
+          <p>ابدأ من حيث أنت: أساسيات التجويد، خطة حفظ، أو تدبّر جزء من القرآن.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">٢</div>
+          <h3>درسٌ كل يوم</h3>
+          <p>دروس قصيرة متتابعة تُفتح بالترتيب، مع تطبيق عملي وتثبيت بعد كل خطوة.</p>
+        </div>
+        <div class="card">
+          <div class="step-num">٣</div>
+          <h3>داوم على وردك</h3>
+          <p>ورد يومي بسيط وسلسلة أيام متصلة، حتى تصبح العادة عبادة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section id="courses">
+      <div class="sec-head">
+        <h2>الكورسات والمسارات</h2>
+        <p>مسارات في التجويد والحفظ والتفسير وبناء العادة. اختر ما يناسب مستواك وابدأ بأول درس.</p>
+      </div>
+
+      <div class="filter-panel">
+        <div class="filter-group" id="track-filters">
+          <span class="filter-label">المسار:</span>
+          <button class="chip active" data-track="all">الكل</button>
+          <button class="chip" data-track="التجويد">التجويد</button>
+          <button class="chip" data-track="الحفظ">الحفظ</button>
+          <button class="chip" data-track="التفسير">التفسير</button>
+        </div>
+        <div class="filter-group" id="level-filters">
+          <span class="filter-label">المستوى:</span>
+          <button class="chip active" data-level="all">الكل</button>
+          <button class="chip" data-level="مبتدئ">مبتدئ</button>
+          <button class="chip" data-level="متوسط">متوسط</button>
+          <button class="chip" data-level="متقدم">متقدم</button>
+        </div>
+      </div>
+
+      <div class="grid-3" id="courses-grid"></div>
+    </section>
+
+    <!-- Daily Wird -->
+    <section id="habit">
+      <div class="wird-banner">
+        <div>
+          <span style="font-size:0.84rem; opacity:0.92; font-weight:800;">برنامج الورد اليومي</span>
+          <h2>اثنتا عشرة دقيقة يوميًا تكفي لتبدأ</h2>
+          <p>صفحة تُقرأ، آية تُحفظ، ودعاء يختم. استخدم مؤقت الـ ١٢ دقيقة ثم سجّل إتمام وردك لحفظ سلسلة أيامك.</p>
+          <div class="timer-box">
+            <div>
+              <div style="font-size:0.78rem; opacity:0.85;">مؤقت الورد اليومي</div>
+              <div class="timer-clock" id="timer-display">12:00</div>
+            </div>
+            <div class="timer-btns">
+              <button class="btn btn-light btn-sm" id="timer-toggle" onclick="toggleTimer()">تشغيل</button>
+              <button class="btn btn-ghost-light btn-sm" onclick="resetTimer()">إعادة</button>
+              <button class="btn btn-light btn-sm" onclick="markTodayDone()">سجّل إتمام اليوم</button>
+            </div>
+          </div>
+        </div>
+
+        <dl class="wird-grid">
+          <div class="wird-item"><dt>القراءة</dt><dd>٥ دقائق</dd></div>
+          <div class="wird-item"><dt>الحفظ</dt><dd>٥ دقائق</dd></div>
+          <div class="wird-item"><dt>المراجعة</dt><dd>دقيقتان</dd></div>
+          <div class="wird-item"><dt>الدعاء</dt><dd>دقيقة</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Local Progress Summary -->
+    <section id="progress-section">
+      <div class="summary-strip">
+        <div class="summary-metrics">
+          <div class="metric">
+            <strong id="metric-lessons">٠</strong>
+            <span>دروس مكتملة</span>
+          </div>
+          <div class="metric">
+            <strong id="metric-days">٠ / ٧</strong>
+            <span>أيام الورد هذا الأسبوع</span>
+          </div>
+          <div class="metric">
+            <strong id="metric-mode">محلي وآمن</strong>
+            <span>حفظ التقدم في متصفحك</span>
+          </div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="resetProgress()">إعادة ضبط التقدم</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lesson Modal -->
+  <div class="modal" id="lesson-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div style="display:flex; justify-content:space-between; align-items:start; gap:12px;">
+        <div>
+          <span class="course-tag" id="modal-tag"></span>
+          <h3 id="modal-title" style="color:var(--primary); margin-top:6px; font-size:1.2rem;"></h3>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="closeModal()">إغلاق ✕</button>
+      </div>
+
+      <div class="lesson-tabs" id="lesson-tabs"></div>
+
+      <div class="lesson-panel">
+        <h4 id="lesson-heading" style="font-size:1rem; margin-bottom:6px; color:var(--text);"></h4>
+        <p id="lesson-body" style="font-size:0.92rem; color:var(--muted);"></p>
+        <div class="lesson-verse" id="lesson-verse"></div>
+        <p id="lesson-practice" style="font-size:0.88rem; color:var(--primary); font-weight:600;"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-sm" id="complete-lesson-btn" onclick="toggleCurrentLessonDone()">تحديد الدرس كمكتمل</button>
+        <button class="btn btn-outline btn-sm" onclick="nextLesson()">الدرس التالي ←</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:10px;">
+            <span class="brand-icon">ن</span>
+            <span class="brand-title">أكاديمية نور</span>
+          </div>
+          <p style="font-size:0.9rem; color:var(--muted);">مسارات تعليمية للقرآن الكريم: تجويد، حفظ، وتفسير، مع ورد يومي يجعل العادة عبادة. يعمل محلياً دون جمع بيانات شخصية.</p>
+        </div>
+        <div>
+          <h3>الأكاديمية</h3>
+          <ul>
+            <li><a href="#courses">الكورسات والمسارات</a></li>
+            <li><a href="#habit">الورد اليومي</a></li>
+            <li><a href="#progress-section">متابعة التقدم</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>آية للتدبر</h3>
+          <p style="font-weight:700; color:var(--primary);">وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</p>
+          <p style="font-size:0.85rem; color:var(--muted);">سورة المزمل · الآية ٤</p>
+        </div>
+      </div>
+      <div class="copyright">© 2026 أكاديمية نور — جميع الحقوق محفوظة</div>
+    </div>
+  </footer>
+
+  <script>
+    const courses = [
+      {
+        id: "tajweed-basics",
+        title: "أساسيات التجويد للمبتدئين",
+        level: "مبتدئ",
+        track: "التجويد",
+        lessonsCountLabel: "٣ دروس تفاعلية",
+        desc: "تعلّم مخارج الحروف وأحكام النون الساكنة والتنوين بأسلوب مبسّط وتطبيقي.",
+        lessons: [
+          {
+            title: "الدرس ١: الإظهار الحلقي",
+            summary: "يظهر حرف النون الساكنة أو التنوين بوضوح دون غنّة كاملة إذا جاء بعده أحد حروف الحلق الستة: (ء، هـ، ع، ح، غ، خ).",
+            verse: "مِنْ آمَنَ · عَذَابٌ أَلِيمٌ · مِنْ خَوْفٍ",
+            practice: "تطبيق عملي: انطق النون بوضوح من طرف اللسان دون إطالة للغنّة."
+          },
+          {
+            title: "الدرس ٢: الإدغام بغنّة وبغير غنّة",
+            summary: "إدغام النون الساكنة أو التنوين في حروف (ي، ن، م، و) بغنّة مقدارها حركتان، وفي (ل، ر) بغير غنّة.",
+            verse: "مَن يَعْمَلْ · مِنْ رَبِّهِمْ · هُدًى لِلْمُتَّقِينَ",
+            practice: "تطبيق عملي: راقب زمن الغنّة في (مَن يَعْمَلْ) ليكون متساوياً."
+          },
+          {
+            title: "الدرس ٣: الإقلاب والإخفاء الحقيقي",
+            summary: "يُقلب النون الساكنة أو التنوين ميماً مخفاة بغنّة عند الباء، ويُخفى عند بقية حروف الإخفاء الخمسة عشر.",
+            verse: "مِنْ بَعْدِ · كُنْتُمْ · صِرَاطًا مُسْتَقِيمًا",
+            practice: "تطبيق عملي: هيّئ الفم لمخرج الحرف التالي مع إبقاء الغنّة."
+          }
+        ]
+      },
+      {
+        id: "hifz-amma",
+        title: "حفظ جزء عمّ خطوة بخطوة",
+        level: "مبتدئ",
+        track: "الحفظ",
+        lessonsCountLabel: "٣ دروس تفاعلية",
+        desc: "خطة عملية لحفظ قصار السور مع التكرار الذكي وتثبيت المتشابهات.",
+        lessons: [
+          {
+            title: "الدرس ١: قاعدة التكرار العشري",
+            summary: "كرّر الآية الأولى ١٠ مرات، ثم الثانية ١٠ مرات، ثم اربطهما معاً ١٠ مرات قبل الانتقال للآية الثالثة.",
+            verse: "عَمَّ يَتَسَاءَلُونَ · عَنِ النَّبَإِ الْعَظِيمِ",
+            practice: "تطبيق عملي: اقرأ المقطع غيباً ٣ مرات متتالية دون النظر للمصحف."
+          },
+          {
+            title: "الدرس ٢: ربط المعاني لتسهيل الحفظ",
+            summary: "الانتباه لتسلسل المعنى يقلّل النسيان ويمنع الخلط بين السور المتقاربة في الطول.",
+            verse: "وَالضُّحَى · وَاللَّيْلِ إِذَا سَجَى",
+            practice: "تطبيق عملي: سمّع المقطع بصوت هادئ واضح وراجع المواضع المتشابهة."
+          },
+          {
+            title: "الدرس ٣: المراجعة التراكمية",
+            summary: "اجعل دقيقتين يومياً لمراجعة ما حفظته سابقاً حتى يصبح الحفظ راسخاً لا يتفلت.",
+            verse: "إِنَّ الْإِنْسَانَ لَفِي خُسْرٍ",
+            practice: "تطبيق عملي: اختبر نفسك في آخر سورتين حفظتهما هذا الأسبوع."
+          }
+        ]
+      },
+      {
+        id: "tafseer-short",
+        title: "تدبّر وتفسير الفاتحة وقصار السور",
+        level: "مبتدئ",
+        track: "التفسير",
+        lessonsCountLabel: "٢ درسان تفاعليان",
+        desc: "فهم معاني الآيات التي نرددها في صلاتنا اليومية لزيادة الخشوع.",
+        lessons: [
+          {
+            title: "الدرس ١: معنى الحمد والهداية في الفاتحة",
+            summary: "الثناء الكامل على الله بصفات الكمال، وطلب الهداية الثابتة إلى الصراط المستقيم في كل ركعة.",
+            verse: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+            practice: "تطبيق عملي: استشعر المعنى أثناء قراءتها في صلاتك القادمة."
+          },
+          {
+            title: "الدرس ٢: الإخلاص والتعوّذ من الوسواس",
+            summary: "تجريد القصد لله وحده، والالتجاء إليه من شرور النفس والوسواس الخفي.",
+            verse: "قُلْ هُوَ اللَّهُ أَحَدٌ",
+            practice: "تطبيق عملي: اربط بين توحيد الله في القلب وبين الطمأنينة اليومية."
+          }
+        ]
+      },
+      {
+        id: "madood-sifat",
+        title: "أحكام المدود والتفخيم والترقيق",
+        level: "متوسط",
+        track: "التجويد",
+        lessonsCountLabel: "٢ درسان تفاعليان",
+        desc: "إتقان موازين المدود وصفات الحروف لتحسين جودة التلاوة.",
+        lessons: [
+          {
+            title: "الدرس ١: المد الطبيعي والمد المتصل والمنفصل",
+            summary: "المد الطبيعي حركتان، بينما يتطلب المد المتصل والمنفصل عناية بمقدار المد وفق الرواية المعتمدة.",
+            verse: "وَالسَّمَاءِ · إِنَّا أَعْطَيْنَاكَ",
+            practice: "تطبيق عملي: حافظ على ثبات حركات المد أثناء التلاوة."
+          },
+          {
+            title: "الدرس ٢: تفخيم الراء وترقيقها",
+            summary: "تُفخّم الراء إذا كانت مفتوحة أو مضمومة أو ساكنة بعد فتح أو ضم، وتُرقّق إذا كانت مكسورة بشروطها.",
+            verse: "رَبِّ اغْفِرْ لِي · فِرْعَوْنَ",
+            practice: "تطبيق عملي: درّب لسانك على الانتقال السلس بين المفخم والمرقق."
+          }
+        ]
+      },
+      {
+        id: "baqarah-stage1",
+        title: "حفظ سورة البقرة — المرحلة الأولى",
+        level: "متوسط",
+        track: "الحفظ",
+        lessonsCountLabel: "٢ درسان تفاعليان",
+        desc: "تقسيم موضوعي لآيات سورة البقرة مع جدول مراجعة أسبوعي منضبط.",
+        lessons: [
+          {
+            title: "الدرس ١: صفات المتقين في مطلع السورة",
+            summary: "تحديد المحاور الأولى للسورة لتثبيت تسلسل الآيات بوضوح.",
+            verse: "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ هُدًى لِلْمُتَّقِينَ",
+            practice: "تطبيق عملي: اقرأ المقطع قراءة تدبّرية أولاً ثم كرّر حسب خطتك."
+          },
+          {
+            title: "الدرس ٢: تثبيت الربط بين المقاطع",
+            summary: "التركيز على أواخر الآيات وبدايات الآيات التي تليها لتجنب التوقف المفاجئ.",
+            verse: "وَاللَّهُ بِمَا تَعْمَلُونَ بَصِيرٌ",
+            practice: "تطبيق عملي: اربط آخر كلمة في كل آية بأول كلمة في الآية التالية."
+          }
+        ]
+      },
+      {
+        id: "waqf-ibtida",
+        title: "إتقان الأداء والوقف والابتداء",
+        level: "متقدم",
+        track: "التجويد",
+        lessonsCountLabel: "٢ درسان تفاعليان",
+        desc: "دراسة مواضع الوقف الحسن والتام وأثرها في إبراز المعنى القرآني.",
+        lessons: [
+          {
+            title: "الدرس ١: الوقف التام والوقف الكافي",
+            summary: "الوقف التام هو الوقف على كلام تمّ معناه ولم يتعلق بما بعده لفظاً ولا معنى.",
+            verse: "أُولَٰئِكَ هُمُ الْمُفْلِحُونَ",
+            practice: "تطبيق عملي: راقب أثر الوقف الصحيح في وضوح المعنى للسامع."
+          },
+          {
+            title: "الدرس ٢: حسن الابتداء بعد الوقف الاضطراري",
+            summary: "إذا انقطع النفس عند كلمة لا يصح الابتداء بها، فارجع إلى كلمة مناسبة يصح الابتداء منها.",
+            verse: "وَاتَّقُوا اللَّهَ وَاعْلَمُوا أَنَّ اللَّهَ بِكُمْ عَلِيمٌ",
+            practice: "تطبيق عملي: درّب نفسك على اختيار نقطة ابتداء سليمة عند ضيق النفس."
+          }
+        ]
+      }
+    ];
+
+    const STORAGE_KEY = "noor_academy_v2_state";
+    const defaultDays = [true, true, true, true, true, false, false];
+    const dayNames = ["سبت", "أحد", "إثنين", "ثلاثاء", "أربعاء", "خميس", "جمعة"];
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        return {
+          days: Array.isArray(saved?.days) && saved.days.length === 7 ? saved.days : [...defaultDays],
+          completedLessons: Array.isArray(saved?.completedLessons) ? saved.completedLessons : []
+        };
+      } catch {
+        return { days: [...defaultDays], completedLessons: [] };
+      }
+    }
+
+    let state = loadState();
+    let activeTrack = "all";
+    let activeLevel = "all";
+    let currentCourseId = null;
+    let currentLessonIdx = 0;
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderDays();
+      renderCourses();
+      renderSummary();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    function getCourseProgress(course) {
+      const total = course.lessons.length;
+      const done = course.lessons.filter((_, idx) =>
+        state.completedLessons.includes(`${course.id}:${idx}`)
+      ).length;
+      return { done, total, pct: Math.round((done / total) * 100) };
+    }
+
+    function renderCourses() {
+      const grid = document.getElementById("courses-grid");
+      const filtered = courses.filter(c => {
+        const trackOk = activeTrack === "all" || c.track === activeTrack;
+        const levelOk = activeLevel === "all" || c.level === activeLevel;
+        return trackOk && levelOk;
+      });
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="card" style="grid-column:1/-1; text-align:center;"><p style="margin-bottom:12px;">لا توجد كورسات مطابقة لهذا التحديد حالياً.</p><button class="btn btn-outline btn-sm" onclick="resetFilters()">إظهار كل الكورسات</button></div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(c => {
+        const prog = getCourseProgress(c);
+        return `
+          <article class="card course-card">
+            <div class="course-top">
+              <span class="course-tag">${c.track} · ${c.level}</span>
+              <span class="course-progress-text">${prog.pct}% مكتمل</span>
+            </div>
+            <h3>${c.title}</h3>
+            <p>${c.desc}</p>
+            <div class="bar-track"><div class="bar-fill" style="width:${prog.pct}%"></div></div>
+            <div class="course-meta">
+              <span>${c.lessonsCountLabel}</span>
+              <button class="btn btn-outline btn-sm" onclick="openCourse('${c.id}')">${prog.done > 0 ? "متابعة الدروس" : "ابدأ الدرس"}</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function resetFilters() {
+      activeTrack = "all";
+      activeLevel = "all";
+      document.querySelectorAll("#track-filters .chip").forEach(b => b.classList.toggle("active", b.dataset.track === "all"));
+      document.querySelectorAll("#level-filters .chip").forEach(b => b.classList.toggle("active", b.dataset.level === "all"));
+      renderCourses();
+    }
+
+    document.querySelectorAll("#track-filters .chip").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#track-filters .chip").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeTrack = btn.dataset.track;
+        renderCourses();
+      });
+    });
+
+    document.querySelectorAll("#level-filters .chip").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("#level-filters .chip").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeLevel = btn.dataset.level;
+        renderCourses();
+      });
+    });
+
+    function openCourse(courseId, lessonIndex = 0) {
+      const course = courses.find(c => c.id === courseId);
+      if (!course) return;
+      currentCourseId = courseId;
+      currentLessonIdx = lessonIndex;
+
+      document.getElementById("modal-tag").textContent = `${course.track} · ${course.level}`;
+      document.getElementById("modal-title").textContent = course.title;
+
+      const tabs = document.getElementById("lesson-tabs");
+      tabs.innerHTML = course.lessons.map((l, idx) => {
+        const isDone = state.completedLessons.includes(`${course.id}:${idx}`);
+        const activeClass = idx === currentLessonIdx ? "btn-primary" : "btn-outline";
+        return `<button class="btn ${activeClass} btn-sm" onclick="openCourse('${course.id}', ${idx})">${isDone ? "✓ " : ""}درس ${idx + 1}</button>`;
+      }).join("");
+
+      const lesson = course.lessons[currentLessonIdx];
+      const key = `${course.id}:${currentLessonIdx}`;
+      const isDone = state.completedLessons.includes(key);
+
+      document.getElementById("lesson-heading").textContent = lesson.title;
+      document.getElementById("lesson-body").textContent = lesson.summary;
+      document.getElementById("lesson-verse").textContent = lesson.verse;
+      document.getElementById("lesson-practice").textContent = lesson.practice;
+
+      const completeBtn = document.getElementById("complete-lesson-btn");
+      completeBtn.textContent = isDone ? "✓ مكتمل (إلغاء التحديد)" : "تحديد الدرس كمكتمل";
+
+      document.getElementById("lesson-modal").classList.add("open");
+    }
+
+    function toggleCurrentLessonDone() {
+      if (!currentCourseId) return;
+      const key = `${currentCourseId}:${currentLessonIdx}`;
+      const idx = state.completedLessons.indexOf(key);
+      if (idx === -1) {
+        state.completedLessons.push(key);
+        showToast("تم تسجيل إتمام الدرس");
+      } else {
+        state.completedLessons.splice(idx, 1);
+        showToast("تم تحديث حالة الدرس");
+      }
+      saveState();
+      openCourse(currentCourseId, currentLessonIdx);
+    }
+
+    function nextLesson() {
+      const course = courses.find(c => c.id === currentCourseId);
+      if (!course) return;
+      const nextIdx = (currentLessonIdx + 1) % course.lessons.length;
+      openCourse(currentCourseId, nextIdx);
+    }
+
+    function closeModal() {
+      document.getElementById("lesson-modal").classList.remove("open");
+    }
+
+    document.getElementById("lesson-modal").addEventListener("click", (e) => {
+      if (e.target.id === "lesson-modal") closeModal();
+    });
+
+    // Weekly Wird
+    function renderDays() {
+      const row = document.getElementById("days-row");
+      row.innerHTML = dayNames.map((name, i) => `
+        <div class="day-pill ${state.days[i] ? "done" : ""}" onclick="toggleDay(${i})">${name}</div>
+      `).join("");
+      const count = state.days.filter(Boolean).length;
+      document.getElementById("streak-count").textContent = `${count} من ٧ أيام`;
+    }
+
+    function toggleDay(i) {
+      state.days[i] = !state.days[i];
+      saveState();
+      showToast("تم تحديث سجل الورد الأسبوعي");
+    }
+
+    function markTodayDone() {
+      const emptyIdx = state.days.indexOf(false);
+      if (emptyIdx !== -1) {
+        state.days[emptyIdx] = true;
+        saveState();
+        showToast(`تم تسجيل ورد يوم ${dayNames[emptyIdx]}`);
+      } else {
+        showToast("أتممت جميع أيام الأسبوع السبعة!");
+      }
+    }
+
+    // 12-Minute Timer
+    let remainingSeconds = 12 * 60;
+    let timerInterval = null;
+
+    function formatTime(sec) {
+      const m = String(Math.floor(sec / 60)).padStart(2, "0");
+      const s = String(sec % 60).padStart(2, "0");
+      return `${m}:${s}`;
+    }
+
+    function updateTimerUI() {
+      document.getElementById("timer-display").textContent = formatTime(remainingSeconds);
+      document.getElementById("timer-toggle").textContent = timerInterval ? "إيقاف مؤقت" : "تشغيل";
+    }
+
+    function toggleTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      } else {
+        timerInterval = setInterval(() => {
+          if (remainingSeconds > 0) {
+            remainingSeconds--;
+            updateTimerUI();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            updateTimerUI();
+            markTodayDone();
+            showToast("أتممت ورد الـ ١٢ دقيقة بنجاح!");
+          }
+        }, 1000);
+      }
+      updateTimerUI();
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      remainingSeconds = 12 * 60;
+      updateTimerUI();
+    }
+
+    function renderSummary() {
+      const doneDaysCount = state.days.filter(Boolean).length;
+      document.getElementById("metric-lessons").textContent = state.completedLessons.length;
+      document.getElementById("metric-days").textContent = `${doneDaysCount} / ٧`;
+    }
+
+    function resetProgress() {
+      state = { days: [...defaultDays], completedLessons: [] };
+      saveState();
+      showToast("تمت إعادة ضبط التقدم المحلي");
+    }
+
+    renderCourses();
+    renderDays();
+    renderSummary();
+    updateTimerUI();
+  </script>
+</body>
+</html>
