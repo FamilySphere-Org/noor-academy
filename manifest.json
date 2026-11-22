@@ -1,0 +1,20 @@
+{
+  "name": "أكاديمية نور — لتعليم القرآن الكريم وحفظه",
+  "short_name": "أكاديمية نور",
+  "description": "مسارات تعليمية للقرآن الكريم: تجويد، حفظ، وتفسير، مع ورد يومي يجعل العادة عبادة.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f6f0",
+  "theme_color": "#14533c",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314533c'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif'>ن</text></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
