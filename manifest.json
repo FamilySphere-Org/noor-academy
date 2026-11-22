@@ -4,6 +4,7 @@
   "description": "مسارات تعليمية للقرآن الكريم: تجويد، حفظ، وتفسير، مع ورد يومي يجعل العادة عبادة.",
   "lang": "ar",
   "dir": "rtl",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -11,10 +12,9 @@
   "theme_color": "#14533c",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314533c'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif'>ن</text></svg>",
-      "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "src": "https://media.base44.com/images/public/6af39236bebbd4f0cdf809a9/c57709855_logo.png/v1/fit/w_180,h_180/c57709855_logo.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ]
 }
